@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>pl.sternik.kk</groupId>
-	<artifactId>gameroo2</artifactId>
+	<artifactId>new-heroo</artifactId>
 	<packaging>war</packaging>
-	<version>1.1-SNAPSHOT</version>
-	<name>Heroku apka grupa weekendowa</name>
+	<version>1.0-SNAPSHOT</version>
+	<name>Heroku apka</name>
 
 	<properties>
 		<!-- <java.version>1.8</java.version> -->
@@ -14,21 +14,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-framework-bom</artifactId>
-				<version>4.3.7.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-
 	<build>
-		<finalName>gameroo2</finalName>
+		<finalName>new-heroo</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
@@ -71,7 +58,18 @@
 			</plugin>
 		</plugins>
 	</build>
-<dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>4.2.2.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
 		<dependency>
 			<groupId>javax.annotation</groupId>
 			<artifactId>jsr250-api</artifactId>
