@@ -1,4 +1,4 @@
-package pl.sternik.kk.heroo.web;
+package pl.sternik.kk.weekend.web;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

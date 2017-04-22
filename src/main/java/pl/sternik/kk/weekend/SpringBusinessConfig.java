@@ -1,4 +1,4 @@
-package pl.sternik.kk.heroo;
+package pl.sternik.kk.weekend;
 
 import javax.sql.DataSource;
 

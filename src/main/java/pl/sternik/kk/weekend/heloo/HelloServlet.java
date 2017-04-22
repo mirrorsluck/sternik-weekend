@@ -1,4 +1,4 @@
-package pl.sternik.kk.weekend;
+package pl.sternik.kk.weekend.heloo;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,6 +14,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -42,11 +43,53 @@ public class HelloServlet extends HttpServlet {
         dataSource.close();
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ServletOutputStream out = resp.getOutputStream();
+        out.println("Hello Heroku, koko maroko z posta");
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream out = resp.getOutputStream();
 
-        out.write("Hello Heroku".getBytes());
+        out.println("Hello Heroku, koko maroko");
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        HttpSession session = req.getSession();
+        Object value = session.getValue("ddd");
+        if(value!= null)
+            out.write(value.toString().getBytes());
+        else
+            out.write("jeszcze nie ma".getBytes());
         System.out.println("--- helloo ---");
 
         try (Connection connection = dataSource.getConnection()) {

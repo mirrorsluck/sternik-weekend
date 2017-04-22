@@ -1,4 +1,4 @@
-package pl.sternik.kk.heroo.heloo;
+package pl.sternik.kk.weekend.heloo;
 
 import java.io.IOException;
 

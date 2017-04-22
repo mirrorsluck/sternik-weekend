@@ -11,11 +11,12 @@
 
 	<servlet>
 		<servlet-name>hello</servlet-name>
-		<servlet-class>pl.sternik.kk.heroo.HelloServlet</servlet-class>
+		<servlet-class>pl.sternik.kk.weekend.heloo.HelloServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>hello</servlet-name>
 		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
+
 </web-app>

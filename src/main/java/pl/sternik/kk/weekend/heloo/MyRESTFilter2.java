@@ -1,6 +1,8 @@
-package pl.sternik.kk.weekend;
+package pl.sternik.kk.weekend.heloo;
 
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.Iterator;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -8,6 +10,10 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.http.HttpRequest;
 
 @WebFilter(filterName = "/MyRESTFilter2", 
 //servletNames = { "HelloServlet" }, 
@@ -21,6 +27,16 @@ public class MyRESTFilter2 implements javax.servlet.Filter {
         System.out.println("--------------- 2222222 ---------------");
         
         chain.doFilter(req, res);
+
+        HttpServletRequest r =  (HttpServletRequest) req;
+        HttpSession session = r.getSession(true);
+        if(session != null){
+            System.out.println("----Mam sesje!!!");
+            Enumeration<String> attributeNames = session.getAttributeNames();
+            while(attributeNames.hasMoreElements())
+                System.out.println(attributeNames.nextElement());
+            session.putValue("ddd", "Kukuku");
+        }
         
         System.out.println("--------------- 7777777 ---------------");
     }
