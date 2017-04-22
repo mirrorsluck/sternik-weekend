@@ -1,0 +1,6 @@
+{
+  "name": "gameroo2",
+  "description": "new app on heroku.",
+  "image": "heroku/java",
+  "addons": [ "heroku-postgresql" ]
+}
