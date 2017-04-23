@@ -2,8 +2,7 @@ package pl.sternik.kk.weekend.web.controlers;
 
 import java.util.Date;
 
-
-import javax.swing.plaf.synth.SynthSpinnerUI;
+import javax.ws.rs.HeaderParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,17 +26,14 @@ import pl.sternik.kk.weekend.repositories.NoSuchMonetaException;
 
 
 
-
-
 @Controller
 public class WprawkiController {
 
-	@Autowired
-	@Qualifier("tablica")
-	MonetyRepository baza;
-	
-	
-    @RequestMapping(path="/wprawki",method=RequestMethod.GET)
+    @Autowired
+    @Qualifier("tablica")
+    MonetyRepository baza;
+    
+    @RequestMapping(path = "/wprawki", method = RequestMethod.GET)
     public String wprawki(ModelMap model) {
         model.put("msg", "Wartosc z modelu");
         model.addAttribute("data", new Date());
@@ -51,50 +47,41 @@ public class WprawkiController {
         model.addAttribute("data", new Date());
         return "wprawki";
     }
-    
+
     @GetMapping("/wprawki2")
     @ResponseBody
-    public String wprawkiParam(@RequestParam("cos") String cosParam, ModelMap model)
-    {
-    	return "wprawki z param cos=" + cosParam;
+    public String wprawkiParam(@RequestParam("cos") String cosParam, ModelMap model) {
+        return "Wprawki z param cos=" + cosParam;
     }
     
     @GetMapping("/wprawki3")
     @ResponseBody
-    public String wprawkiHeader(@RequestHeader("User-Agent") String cosParam, ModelMap model)
-    {
-    	return "Uzywasz=" + cosParam;
+    public String wprawkiHeader(@RequestHeader("User-Agent") String cosParam, ModelMap model) {
+        return "Uzywasz przegladarki:=" + cosParam;
     }
     
-    @RequestMapping(value= "/wprawki/monety/{id}/json", produces = "application/json")
+    @GetMapping(value = "/wprawki/monety/{id}/json", produces = "application/json")
     @ResponseBody
-    public ResponseEntity<Moneta> viewAsJson(@PathVariable("id") Long  id, final ModelMap model)
-    {
-    	Moneta m;
-    	try
-    	{
-    		m = baza.readById(id);
-    		return new ResponseEntity<Moneta>(m,HttpStatus.OK);
-    	}
-    	catch (NoSuchMonetaException e)
-    	{
-    		System.out.println(e.getClass().getName());
-    		m = new Moneta();
-    		m.setNumerKatalogowy(id);
-    		m.setKrajPochodzenia("Polska");
-    		m.setStatus(Status.NOWA);
-    		m.setNominal(10L);
-    		try
-    		{
-    			baza.create(m);
-    		}
-    		catch (MonetaAlreadyExistsException el)
-    		{
-    			System.out.println(el.getClass().getName());
-    		}
-    		return new ResponseEntity<Moneta>(m, HttpStatus.CREATED);
-    	}
+    public ResponseEntity<Moneta> viewAsJson(@PathVariable("id") Long id, final ModelMap model) {
+        Moneta m;
+        try {
+            m = baza.readById(id);
+            return new ResponseEntity<Moneta>(m, HttpStatus.OK);
+            
+        } catch (NoSuchMonetaException e) {
+            System.out.println(e.getClass().getName());
+            m = new Moneta();
+            m.setNumerKatalogowy(id);
+            m.setKrajPochodzenia("Polska");
+            m.setStatus(Status.NOWA);
+            m.setNominal(10L);
+            try {
+                baza.create(m);
+            } catch (MonetaAlreadyExistsException e1) {
+                System.out.println(e1.getClass().getName());
+            }
+            return new ResponseEntity<Moneta>(m, HttpStatus.CREATED);
+        }
     }
-    
 
 }
