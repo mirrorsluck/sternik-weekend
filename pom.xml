@@ -41,7 +41,7 @@
 					<systemProperties>
 						<systemProperty>
 							<name>jetty.port</name>
-							<value>80</value>
+							<value>81</value>
 						</systemProperty>
 					</systemProperties>
 				</configuration>
