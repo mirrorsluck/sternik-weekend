@@ -1,9 +1,9 @@
-package pl.sternik.kk.weekend.services;
+package pl.sternik.rcz.weekend.services;
 
 import java.util.List;
 import java.util.Optional;
 
-import pl.sternik.kk.weekend.entities.Moneta;
+import pl.sternik.rcz.weekend.entities.Moneta;
 
 
 public interface KlaserService {
@@ -20,4 +20,6 @@ public interface KlaserService {
     Optional<Boolean> deleteById(Long id);
 
     List<Moneta> findLatest3();
+
+	List<Moneta> findAllDublety();
 }

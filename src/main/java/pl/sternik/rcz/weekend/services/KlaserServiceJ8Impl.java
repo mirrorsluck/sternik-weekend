@@ -1,4 +1,4 @@
-package pl.sternik.kk.weekend.services;
+package pl.sternik.rcz.weekend.services;
 
 import java.util.List;
 import java.util.Objects;
@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import pl.sternik.kk.weekend.entities.Moneta;
-import pl.sternik.kk.weekend.entities.Status;
-import pl.sternik.kk.weekend.repositories.MonetaAlreadyExistsException;
-import pl.sternik.kk.weekend.repositories.MonetyRepository;
-import pl.sternik.kk.weekend.repositories.NoSuchMonetaException;
+import pl.sternik.rcz.weekend.entities.Moneta;
+import pl.sternik.rcz.weekend.entities.Status;
+import pl.sternik.rcz.weekend.repositories.MonetaAlreadyExistsException;
+import pl.sternik.rcz.weekend.repositories.MonetyRepository;
+import pl.sternik.rcz.weekend.repositories.NoSuchMonetaException;
 
 
 @Service
@@ -83,4 +83,10 @@ public class KlaserServiceJ8Impl implements KlaserService {
         return monety.findAll().stream().filter(p -> Objects.equals(p.getStatus(), Status.DO_SPRZEDANIA))
                 .collect(Collectors.toList());
     }
+
+	@Override
+	public List<Moneta> findAllDublety() {
+	      return monety.findAll().stream().filter(p -> Objects.equals(p.getStatus(), Status.DUBLET))
+	                .collect(Collectors.toList());
+	}
 }

@@ -1,11 +1,11 @@
-package pl.sternik.kk.weekend;
+package pl.sternik.rcz.weekend;
 
 import javax.servlet.Filter;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import pl.sternik.kk.weekend.web.SpringWebConfig;
+import pl.sternik.rcz.weekend.web.SpringWebConfig;
 
 
 

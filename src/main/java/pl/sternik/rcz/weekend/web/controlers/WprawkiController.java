@@ -1,4 +1,4 @@
-package pl.sternik.kk.weekend.web.controlers;
+package pl.sternik.rcz.weekend.web.controlers;
 
 import java.util.Date;
 
@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import pl.sternik.kk.weekend.entities.Moneta;
-import pl.sternik.kk.weekend.entities.Status;
-import pl.sternik.kk.weekend.repositories.MonetaAlreadyExistsException;
-import pl.sternik.kk.weekend.repositories.MonetyRepository;
-import pl.sternik.kk.weekend.repositories.NoSuchMonetaException;
+import pl.sternik.rcz.weekend.entities.Moneta;
+import pl.sternik.rcz.weekend.entities.Status;
+import pl.sternik.rcz.weekend.repositories.MonetaAlreadyExistsException;
+import pl.sternik.rcz.weekend.repositories.MonetyRepository;
+import pl.sternik.rcz.weekend.repositories.NoSuchMonetaException;
 
 
 

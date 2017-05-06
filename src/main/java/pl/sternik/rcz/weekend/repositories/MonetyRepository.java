@@ -1,8 +1,8 @@
-package pl.sternik.kk.weekend.repositories;
+package pl.sternik.rcz.weekend.repositories;
 
 import java.util.List;
 
-import pl.sternik.kk.weekend.entities.Moneta;
+import pl.sternik.rcz.weekend.entities.Moneta;
 
 
 public interface MonetyRepository {

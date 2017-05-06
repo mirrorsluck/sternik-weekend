@@ -1,4 +1,4 @@
-package pl.sternik.kk.weekend.repositories;
+package pl.sternik.rcz.weekend.repositories;
 
 public class NoSuchMonetaException extends Exception {
     private static final long serialVersionUID = -8555511053844242536L;

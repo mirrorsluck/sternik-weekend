@@ -1,4 +1,4 @@
-package pl.sternik.kk.weekend.heloo;
+package pl.sternik.rcz.weekend.heloo;
 
 import java.io.IOException;
 import java.sql.Connection;

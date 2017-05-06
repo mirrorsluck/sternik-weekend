@@ -1,4 +1,4 @@
-package pl.sternik.kk.weekend;
+package pl.sternik.rcz.weekend;
 
 import javax.sql.DataSource;
 
@@ -11,8 +11,8 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.ImportResource;
 
 @Configuration
-@ComponentScan(basePackages = { "pl.sternik.kk.weekend" }, excludeFilters = {
-        @Filter(type = FilterType.REGEX, pattern = "pl\\.sternik\\.kk\\.weekend\\.web\\..*") })
+@ComponentScan(basePackages = { "pl.sternik.rcz.weekend" }, excludeFilters = {
+        @Filter(type = FilterType.REGEX, pattern = "pl\\.sternik\\.rcz\\.weekend\\.web\\..*") })
 //@ImportResource({"classpath:/applicationContext.xml"})//,"classpath:/database-config.xml"})
 public class SpringBusinessConfig {
 

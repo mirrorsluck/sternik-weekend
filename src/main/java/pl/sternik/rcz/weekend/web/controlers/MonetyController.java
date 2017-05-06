@@ -1,4 +1,4 @@
-package pl.sternik.kk.weekend.web.controlers;
+package pl.sternik.rcz.weekend.web.controlers;
 
 import java.util.Arrays;
 import java.util.Calendar;
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import pl.sternik.kk.weekend.entities.Moneta;
-import pl.sternik.kk.weekend.entities.Status;
-import pl.sternik.kk.weekend.services.KlaserService;
-import pl.sternik.kk.weekend.services.NotificationService;
+import pl.sternik.rcz.weekend.entities.Moneta;
+import pl.sternik.rcz.weekend.entities.Status;
+import pl.sternik.rcz.weekend.services.KlaserService;
+import pl.sternik.rcz.weekend.services.NotificationService;
 
 @Controller
 public class MonetyController {

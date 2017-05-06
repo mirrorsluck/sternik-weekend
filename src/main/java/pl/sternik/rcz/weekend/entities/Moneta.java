@@ -1,4 +1,4 @@
-package pl.sternik.kk.weekend.entities;
+package pl.sternik.rcz.weekend.entities;
 
 import java.math.BigDecimal;
 import java.util.Date;

@@ -15,17 +15,19 @@
     <a href="index.html" th:href="@{/}"><img src="../../images/klaser.jpg" th:src="@{/images/klaser.jpg}"/> </a> 
     <a href="klaser.html" th:href="@{/monety}">Wszystkie monety</a>
     <a href="tosell.html" th:href="@{/tosell}">Monety do sprzedania</a>
+            <a href="dublety.html" th:href="@{/dublety}">Dublety</a>
     <a href="moneta.html" th:href="@{/monety/create}">Dodaj monetę</a>
+
    <!--  Zalogowany: <b th:inline="text"> [[${#httpServletRequest.remoteUser}]] </b>  
     <form th:action="@{/wyloguj}" method="POST" style="display: inline">
         <input type=submit class="link" value="Wyloguj"/>
     </form>
     -->    
-<!--     <ul id="messages">
+     <ul id="messages">
       <li th:each="msg : ${MyMessages}" th:text="${msg.text}"
            th:class="${#strings.toLowerCase(msg.type)}">
       </li>
-    </ul> -->
+    </ul> 
   </header>
 
   <div>
@@ -36,7 +38,7 @@
   </div>
 
   <footer th:fragment="site-footer"> 
-  Rafał Czernecki <a href="https://github.com/kkoziol/sternik-weekend"> Source code</a>
+  Rafał Czernecki <a href="https://github.com/rczoziol/sternik-weekend"> Source code</a>
   &copy; Sternik Klaser System, 2017 
   </footer>
 

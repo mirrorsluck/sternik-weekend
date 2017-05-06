@@ -33,7 +33,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr th:each="coin : ${coinsToSell}">
+        <tr th:each="coin : ${coinsDublety}">
           <form action="#" th:action="@{/monety}" th:object="${coin}" method="post">
           <td th:text="${coin.numerKatalogowy}">1</td>
           <td th:text="${coin.nominal}">100</td>

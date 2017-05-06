@@ -1,8 +1,8 @@
-package pl.sternik.kk.weekend.services;
+package pl.sternik.rcz.weekend.services;
 
 import java.util.List;
 
-import pl.sternik.kk.weekend.services.NotificationServiceImpl.NotificationMessage;
+import pl.sternik.rcz.weekend.services.NotificationServiceImpl.NotificationMessage;
 
 public interface NotificationService {
     void addInfoMessage(String msg);

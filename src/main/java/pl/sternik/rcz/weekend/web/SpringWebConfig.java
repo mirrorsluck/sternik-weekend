@@ -1,4 +1,4 @@
-package pl.sternik.kk.weekend.web;
+package pl.sternik.rcz.weekend.web;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.format.datetime.DateFormatter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -20,7 +21,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({ "pl.sternik.kk.weekend.web" })
+@ComponentScan({ "pl.sternik.rcz.weekend.web" })
 public class SpringWebConfig
         extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 
@@ -62,16 +63,16 @@ public class SpringWebConfig
         return messageSource;
     }
 
-//    @Override
-//    public void addFormatters(final FormatterRegistry registry) {
-//        super.addFormatters(registry);
-//        registry.addFormatter(dateFormatter());
-//    }
+    @Override
+    public void addFormatters(final FormatterRegistry registry) {
+        super.addFormatters(registry);
+        registry.addFormatter(dateFormatter());
+    }
 
-//    @Bean
-//    public DateFormatter dateFormatter() {
-//        return new DateFormatter();
-//    }
+    @Bean
+    public DateFormatter dateFormatter() {
+        return new DateFormatter();
+    }
 
 
 

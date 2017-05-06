@@ -1,4 +1,4 @@
-package pl.sternik.kk.weekend.repositories;
+package pl.sternik.rcz.weekend.repositories;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -9,8 +9,8 @@ import java.util.Objects;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import pl.sternik.kk.weekend.entities.Moneta;
-import pl.sternik.kk.weekend.entities.Status;
+import pl.sternik.rcz.weekend.entities.Moneta;
+import pl.sternik.rcz.weekend.entities.Status;
 
 
 @Service

@@ -1,4 +1,4 @@
-package pl.sternik.kk.weekend.entities;
+package pl.sternik.rcz.weekend.entities;
 
 
 public enum Status {
@@ -9,6 +9,7 @@ public enum Status {
     
     
     public static final Status[] ALL = { NOWA, DO_SPRZEDANIA, DUBLET };
+    public static final Status[] SPRZ = { NOWA, DO_SPRZEDANIA, DUBLET };
     
     
     private final String name;
