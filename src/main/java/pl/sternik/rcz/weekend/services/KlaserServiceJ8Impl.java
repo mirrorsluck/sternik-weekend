@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import pl.sternik.rcz.weekend.entities.Moneta;
+import pl.sternik.rcz.weekend.entities.gra;
 import pl.sternik.rcz.weekend.entities.Status;
-import pl.sternik.rcz.weekend.repositories.MonetaAlreadyExistsException;
-import pl.sternik.rcz.weekend.repositories.MonetyRepository;
-import pl.sternik.rcz.weekend.repositories.NoSuchMonetaException;
+import pl.sternik.rcz.weekend.repositories.graAlreadyExistsException;
+import pl.sternik.rcz.weekend.repositories.gryRepository;
+import pl.sternik.rcz.weekend.repositories.NoSuchgraException;
 
 
 @Service
@@ -23,36 +23,36 @@ public class KlaserServiceJ8Impl implements KlaserService {
 
     @Autowired
     @Qualifier("lista")
-    private MonetyRepository monety;
+    private gryRepository gry;
 
     @Override
-    public List<Moneta> findAll() {
-        return monety.findAll();
+    public List<gra> findAll() {
+        return gry.findAll();
     }
 
     @Override
-    public List<Moneta> findLatest3() {
-        return monety.findAll().stream().sorted((a, b) -> b.getDataNabycia().compareTo(a.getDataNabycia())).limit(5)
+    public List<gra> findLatest3() {
+        return gry.findAll().stream().sorted((a, b) -> b.getDataNabycia().compareTo(a.getDataNabycia())).limit(5)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<Moneta> findById(Long id) {
+    public Optional<gra> findById(Long id) {
         try {
-            return Optional.of(monety.readById(id));
-        } catch (NoSuchMonetaException e) {
+            return Optional.of(gry.readById(id));
+        } catch (NoSuchgraException e) {
             return Optional.empty();
         }
     }
 
     @Override
-    public Optional<Moneta> create(Moneta moneta) {
+    public Optional<gra> create(gra gra) {
         try {
-            return Optional.of(monety.create(moneta));
-        } catch (MonetaAlreadyExistsException e) {
+            return Optional.of(gry.create(gra));
+        } catch (graAlreadyExistsException e) {
             try {
-                return Optional.of(monety.readById(moneta.getNumerKatalogowy()));
-            } catch (NoSuchMonetaException e1) {
+                return Optional.of(gry.readById(gra.getNumerKatalogowy()));
+            } catch (NoSuchgraException e1) {
                 return Optional.empty();
             }
         }
@@ -60,10 +60,10 @@ public class KlaserServiceJ8Impl implements KlaserService {
     }
 
     @Override
-    public Optional<Moneta> edit(Moneta moneta) {
+    public Optional<gra> edit(gra gra) {
         try {
-            return Optional.of(monety.update(moneta));
-        } catch (NoSuchMonetaException e) {
+            return Optional.of(gry.update(gra));
+        } catch (NoSuchgraException e) {
             return Optional.empty();
         }
     }
@@ -71,22 +71,22 @@ public class KlaserServiceJ8Impl implements KlaserService {
     @Override
     public Optional<Boolean> deleteById(Long id) {
         try {
-            monety.deleteById(id);
+            gry.deleteById(id);
             return Optional.of(Boolean.TRUE);
-        } catch (NoSuchMonetaException e) {
+        } catch (NoSuchgraException e) {
             return Optional.of(Boolean.FALSE);
         }
     }
 
     @Override
-    public List<Moneta> findAllToSell() {
-        return monety.findAll().stream().filter(p -> Objects.equals(p.getStatus(), Status.DO_SPRZEDANIA))
+    public List<gra> findAllToSell() {
+        return gry.findAll().stream().filter(p -> Objects.equals(p.getStatus(), Status.DO_SPRZEDANIA))
                 .collect(Collectors.toList());
     }
 
 	@Override
-	public List<Moneta> findAllDublety() {
-	      return monety.findAll().stream().filter(p -> Objects.equals(p.getStatus(), Status.DUBLET))
+	public List<gra> findAllDublety() {
+	      return gry.findAll().stream().filter(p -> Objects.equals(p.getStatus(), Status.DUBLET))
 	                .collect(Collectors.toList());
 	}
 }

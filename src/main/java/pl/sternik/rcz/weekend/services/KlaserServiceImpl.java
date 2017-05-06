@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import pl.sternik.rcz.weekend.entities.Moneta;
-import pl.sternik.rcz.weekend.repositories.MonetaAlreadyExistsException;
-import pl.sternik.rcz.weekend.repositories.MonetyRepository;
-import pl.sternik.rcz.weekend.repositories.NoSuchMonetaException;
+import pl.sternik.rcz.weekend.entities.gra;
+import pl.sternik.rcz.weekend.repositories.graAlreadyExistsException;
+import pl.sternik.rcz.weekend.repositories.gryRepository;
+import pl.sternik.rcz.weekend.repositories.NoSuchgraException;
 
 
 @Service
@@ -20,41 +20,41 @@ public class KlaserServiceImpl implements KlaserService {
 
     @Autowired
     @Qualifier("tablica")
-    private MonetyRepository bazaDanych;
+    private gryRepository bazaDanych;
 
     @Override
-    public List<Moneta> findAll() {
+    public List<gra> findAll() {
         return bazaDanych.findAll();
     }
 
     @Override
-    public List<Moneta> findAllToSell() {
+    public List<gra> findAllToSell() {
         return bazaDanych.findAll();
     }
 
     @Override
-    public Optional<Moneta> findById(Long id) {
+    public Optional<gra> findById(Long id) {
         try {
             return Optional.of(bazaDanych.readById(id));
-        } catch (NoSuchMonetaException e) {
+        } catch (NoSuchgraException e) {
             return Optional.empty();
         }
     }
 
     @Override
-    public Optional<Moneta> create(Moneta moneta) {
+    public Optional<gra> create(gra gra) {
         try {
-            return Optional.of(bazaDanych.create(moneta));
-        } catch (MonetaAlreadyExistsException e) {
+            return Optional.of(bazaDanych.create(gra));
+        } catch (graAlreadyExistsException e) {
             return Optional.empty();
         }
     }
 
     @Override
-    public Optional<Moneta> edit(Moneta moneta) {
+    public Optional<gra> edit(gra gra) {
         try {
-            return Optional.of(bazaDanych.update(moneta));
-        } catch (NoSuchMonetaException e) {
+            return Optional.of(bazaDanych.update(gra));
+        } catch (NoSuchgraException e) {
             return Optional.empty();
         }
 
@@ -65,18 +65,18 @@ public class KlaserServiceImpl implements KlaserService {
         try {
             bazaDanych.deleteById(id);
             return Optional.of(Boolean.TRUE);
-        } catch (NoSuchMonetaException e) {
+        } catch (NoSuchgraException e) {
             return Optional.of(Boolean.FALSE);
         }
     }
 
     @Override
-    public List<Moneta> findLatest3() {
+    public List<gra> findLatest3() {
         return Collections.emptyList();
     }
 
 	@Override
-	public List<Moneta> findAllDublety() {
+	public List<gra> findAllDublety() {
 		  return bazaDanych.findAll();
 	}
 

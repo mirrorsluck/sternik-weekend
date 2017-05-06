@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import pl.sternik.rcz.weekend.entities.Moneta;
+import pl.sternik.rcz.weekend.entities.gra;
 import pl.sternik.rcz.weekend.entities.Status;
-import pl.sternik.rcz.weekend.repositories.MonetaAlreadyExistsException;
-import pl.sternik.rcz.weekend.repositories.MonetyRepository;
-import pl.sternik.rcz.weekend.repositories.NoSuchMonetaException;
+import pl.sternik.rcz.weekend.repositories.graAlreadyExistsException;
+import pl.sternik.rcz.weekend.repositories.gryRepository;
+import pl.sternik.rcz.weekend.repositories.NoSuchgraException;
 
 
 
@@ -31,7 +31,7 @@ public class WprawkiController {
 
     @Autowired
     @Qualifier("tablica")
-    MonetyRepository baza;
+    gryRepository baza;
     
     @RequestMapping(path = "/wprawki", method = RequestMethod.GET)
     public String wprawki(ModelMap model) {
@@ -60,27 +60,27 @@ public class WprawkiController {
         return "Uzywasz przegladarki:=" + cosParam;
     }
     
-    @GetMapping(value = "/wprawki/monety/{id}/json", produces = "application/json")
+    @GetMapping(value = "/wprawki/gry/{id}/json", produces = "application/json")
     @ResponseBody
-    public ResponseEntity<Moneta> viewAsJson(@PathVariable("id") Long id, final ModelMap model) {
-        Moneta m;
+    public ResponseEntity<gra> viewAsJson(@PathVariable("id") Long id, final ModelMap model) {
+        gra m;
         try {
             m = baza.readById(id);
-            return new ResponseEntity<Moneta>(m, HttpStatus.OK);
+            return new ResponseEntity<gra>(m, HttpStatus.OK);
             
-        } catch (NoSuchMonetaException e) {
+        } catch (NoSuchgraException e) {
             System.out.println(e.getClass().getName());
-            m = new Moneta();
+            m = new gra();
             m.setNumerKatalogowy(id);
-            m.setKrajPochodzenia("Polska");
+            m.setWydawca("Polska");
             m.setStatus(Status.NOWA);
-            m.setNominal(10L);
+            m.setPEGI(10L);
             try {
                 baza.create(m);
-            } catch (MonetaAlreadyExistsException e1) {
+            } catch (graAlreadyExistsException e1) {
                 System.out.println(e1.getClass().getName());
             }
-            return new ResponseEntity<Moneta>(m, HttpStatus.CREATED);
+            return new ResponseEntity<gra>(m, HttpStatus.CREATED);
         }
     }
 

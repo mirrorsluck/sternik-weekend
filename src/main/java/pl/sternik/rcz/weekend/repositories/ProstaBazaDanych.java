@@ -8,34 +8,34 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import pl.sternik.rcz.weekend.entities.Moneta;
+import pl.sternik.rcz.weekend.entities.gra;
 import pl.sternik.rcz.weekend.entities.Status;
 
 
 @Repository
 @Qualifier("tablica")
-public class ProstaBazaDanych implements MonetyRepository {
+public class ProstaBazaDanych implements gryRepository {
 
-    private Moneta[] baza;
+    private gra[] baza;
 
     public ProstaBazaDanych() {
-        baza = new Moneta[15];
-        Moneta m = new Moneta();
+        baza = new gra[15];
+        gra m = new gra();
         m.setNumerKatalogowy(0L);
-        m.setKrajPochodzenia("Polska");
-        m.setNominal(1L);
-        m.setWaluta("zł");
-        m.setOpis("Ładna nowiutka złotóweczka");
+        m.setWydawca("Polska");
+        m.setPEGI(1L);
+        m.setNosnik("zł");
+        m.setNazwa("Ładna nowiutka złotóweczka");
         m.setDataNabycia(new Date());
         m.setCenaNabycia(new BigDecimal("1.2"));
         m.setStatus(Status.NOWA);
         baza[0] = m;
-        m = new Moneta();
+        m = new gra();
         m.setNumerKatalogowy(2L);
-        m.setKrajPochodzenia("Polska");
-        m.setNominal(2L);
-        m.setWaluta("zł");
-        m.setOpis("Ładna nowiutka dwu złotóweczka");
+        m.setWydawca("Polska");
+        m.setPEGI(2L);
+        m.setNosnik("zł");
+        m.setNazwa("Ładna nowiutka dwu złotóweczka");
         m.setDataNabycia(new Date());
         m.setCenaNabycia(new BigDecimal("2.2"));
         m.setStatus(Status.DO_SPRZEDANIA);
@@ -44,57 +44,57 @@ public class ProstaBazaDanych implements MonetyRepository {
     }
 
     public ProstaBazaDanych(int rozmiarBazy) {
-        baza = new Moneta[rozmiarBazy];
+        baza = new gra[rozmiarBazy];
     }
 
     @Override
-    public Moneta create(Moneta moneta) throws MonetaAlreadyExistsException {
-        if (moneta.getNumerKatalogowy() != null && baza[moneta.getNumerKatalogowy().intValue()] != null) {
-            if (moneta.getNumerKatalogowy().equals(baza[moneta.getNumerKatalogowy().intValue()].getNumerKatalogowy())) {
-                throw new MonetaAlreadyExistsException("Już jest moneta o takim numerze.");
+    public gra create(gra gra) throws graAlreadyExistsException {
+        if (gra.getNumerKatalogowy() != null && baza[gra.getNumerKatalogowy().intValue()] != null) {
+            if (gra.getNumerKatalogowy().equals(baza[gra.getNumerKatalogowy().intValue()].getNumerKatalogowy())) {
+                throw new graAlreadyExistsException("Już jest gra o takim numerze.");
             }
         }
         for (int i = 0; i < baza.length; i++) {
             if (baza[i] == null) {
-                baza[i] = moneta;
-                moneta.setNumerKatalogowy((long) i);
-                return moneta;
+                baza[i] = gra;
+                gra.setNumerKatalogowy((long) i);
+                return gra;
             }
         }
         throw new RuntimeException("Brak miejsca w tablicy");
     }
 
     @Override
-    public void deleteById(Long id) throws NoSuchMonetaException {
+    public void deleteById(Long id) throws NoSuchgraException {
         int numerKatalogowy = id.intValue();
         if (!sprawdzPoprawnoscNumeruKatalogowego(numerKatalogowy)) {
-            throw new NoSuchMonetaException("Nie poprawny numer katologowy");
+            throw new NoSuchgraException("Nie poprawny numer katologowy");
         }
         // tu troche zle ;)
         baza[numerKatalogowy] = null;
     }
 
     @Override
-    public Moneta update(Moneta moneta) throws NoSuchMonetaException {
-        int numerKatalogowy = moneta.getNumerKatalogowy().intValue();
+    public gra update(gra gra) throws NoSuchgraException {
+        int numerKatalogowy = gra.getNumerKatalogowy().intValue();
         if (!sprawdzPoprawnoscNumeruKatalogowego(numerKatalogowy)) {
-            throw new NoSuchMonetaException("Nie poprawny numer katologowy");
+            throw new NoSuchgraException("Nie poprawny numer katologowy");
         }
 
-        Moneta m = baza[moneta.getNumerKatalogowy().intValue()];
+        gra m = baza[gra.getNumerKatalogowy().intValue()];
         if (m == null) {
-            throw new NoSuchMonetaException("Brak takiej monety.");
+            throw new NoSuchgraException("Brak takiej gry.");
         } else {
-            baza[moneta.getNumerKatalogowy().intValue()] = moneta;
+            baza[gra.getNumerKatalogowy().intValue()] = gra;
         }
-        return moneta;
+        return gra;
     }
 
     @Override
-    public Moneta readById(Long numerKatalogowy) throws NoSuchMonetaException {
+    public gra readById(Long numerKatalogowy) throws NoSuchgraException {
         int id = numerKatalogowy.intValue();
         if (!sprawdzPoprawnoscNumeruKatalogowego(id) || czyWolne(id)) {
-            throw new NoSuchMonetaException();
+            throw new NoSuchgraException();
         }
         return baza[id];
     }
@@ -106,8 +106,8 @@ public class ProstaBazaDanych implements MonetyRepository {
     }
 
     @Override
-    public List<Moneta> findAll() {
-        List<Moneta> tmp = new ArrayList<>();
+    public List<gra> findAll() {
+        List<gra> tmp = new ArrayList<>();
         for (int i = 0; i < baza.length; i++) {
             if (baza[i] != null)
                 tmp.add(baza[i]);

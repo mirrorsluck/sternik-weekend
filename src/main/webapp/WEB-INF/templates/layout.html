@@ -5,18 +5,19 @@
 <head th:fragment="site-head">
 <title th:text="#{title.application}">Klaser</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all" href="../../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <link rel="stylesheet" type="text/css" media="all" href="../../css/klaser.css" th:href="@{/css/klaser.css}" />
-<link rel="icon" href="../../imgages/coins.ico" th:href="@{/images/coins.ico}" />
+<link rel="icon" href="../../imgages/games.ico" th:href="@{/images/games.ico}" />
 </head>
 
 <body>
 
-  <header th:fragment="site-header">
-    <a href="index.html" th:href="@{/}"><img src="../../images/klaser.jpg" th:src="@{/images/klaser.jpg}"/> </a> 
-    <a href="klaser.html" th:href="@{/monety}">Wszystkie monety</a>
-    <a href="tosell.html" th:href="@{/tosell}">Monety do sprzedania</a>
-            <a href="dublety.html" th:href="@{/dublety}">Dublety</a>
-    <a href="moneta.html" th:href="@{/monety/create}">Dodaj monetę</a>
+  <header style="background-color: black;" th:fragment="site-header">
+    <a  href="index.html" th:href="@{/}"><img style="padding: 10px;" src="../../images/klaser.png" th:src="@{/images/klaser.png}"/> </a> 
+    <a class="btn btn-warning" style="width: 150px; margin-left: 25px;" href="klaser.html" th:href="@{/gry}">Wszystkie gry</a>
+    <a class="btn btn-warning" style="width: 150px;" href="tosell.html" th:href="@{/tosell}">Gry do sprzedania</a>
+            <a class="btn btn-warning" style="width: 150px;" href="dublety.html" th:href="@{/dublety}">Dublety</a>
+    <a class="btn btn-warning" style="width: 150px;" href="gra.html" th:href="@{/gry/create}">Dodaj grę</a>
 
    <!--  Zalogowany: <b th:inline="text"> [[${#httpServletRequest.remoteUser}]] </b>  
     <form th:action="@{/wyloguj}" method="POST" style="display: inline">
@@ -31,8 +32,8 @@
   </header>
 
   <div>
-    <h2 th:text="#{title.list}" style="display: inline;">Klaser monet</h2>    
-    <img src="../../images/klaser.jpg" alt="Klaser logo" title="Klaser logo" th:src="@{/images/klaser.jpg}"
+    <h2 th:text="#{title.list}" style="display: inline;">Klaser gier</h2>    
+    <img src="../../images/klaser.png" alt="Klaser logo" title="Klaser logo" th:src="@{/images/klaser.png}"
       th:alt-title="#{title.application}" style="float: right;" /> 
     <p> A tu jakis kontent, raczje sie nie pokaże </p>
   </div>

@@ -7,39 +7,39 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 //@Entity
 //@XmlRootElement
-public class Moneta {
+public class gra {
 
 //    @NotNull
 //    @Id
     private Long numerKatalogowy;
 	
 //	@NotNull
-	private Long nominal;
+	private Long PEGI;
 	
-	//@Size(min=2, max=30, message = "{Size.moneta.opis}")
-//	@Size(min=2, max=30, message = "Opis should be in the range [{min}...{max}]")
-	private String opis;
+	//@Size(min=2, max=30, message = "{Size.gra.nazwa}")
+//	@Size(min=2, max=30, message = "Nazwa should be in the range [{min}...{max}]")
+	private String nazwa;
 //	@NotEmpty
-	private String waluta;
+	private String nosnik;
 //	@NotNull
 	private BigDecimal cenaNabycia;
 //	@NotNull
 	private Date dataNabycia;
 //	@NotEmpty
-	private String krajPochodzenia;
+	private String wydawca;
 //	@NotNull
 	private Status status;
 
 	
 	
-	public static Moneta produceMoneta(Long numerKatalogowy, String krajPochodzenia, Long nominal, String waluta, String opis,
+	public static gra producegra(Long numerKatalogowy, String wydawca, Long PEGI, String nosnik, String nazwa,
 			Date dataNabycia, BigDecimal cenaNabycia, Status status) {
-		Moneta m = new Moneta();
+		gra m = new gra();
 		m.numerKatalogowy = numerKatalogowy;
-		m.krajPochodzenia = krajPochodzenia;
-		m.nominal = nominal;
-		m.opis = opis;
-		m.waluta = waluta;
+		m.wydawca = wydawca;
+		m.PEGI = PEGI;
+		m.nazwa = nazwa;
+		m.nosnik = nosnik;
 		m.cenaNabycia = cenaNabycia;
 		m.dataNabycia = dataNabycia;
 		m.status = status;
@@ -50,16 +50,16 @@ public class Moneta {
 		return numerKatalogowy;
 	}
 
-	public Long getNominal() {
-		return nominal;
+	public Long getPEGI() {
+		return PEGI;
 	}
 
-	public String getOpis() {
-		return opis;
+	public String getNazwa() {
+		return nazwa;
 	}
 
-	public String getWaluta() {
-		return waluta;
+	public String getNosnik() {
+		return nosnik;
 	}
 
 	public BigDecimal getCenaNabycia() {
@@ -70,8 +70,8 @@ public class Moneta {
 		return dataNabycia;
 	}
 
-	public String getKrajPochodzenia() {
-		return krajPochodzenia;
+	public String getWydawca() {
+		return wydawca;
 	}
 
 	public Status getStatus() {
@@ -82,16 +82,16 @@ public class Moneta {
 		this.numerKatalogowy = numerKatalogowy;
 	}
 
-	public void setNominal(Long nominal) {
-		this.nominal = nominal;
+	public void setPEGI(Long PEGI) {
+		this.PEGI = PEGI;
 	}
 
-	public void setOpis(String opis) {
-		this.opis = opis;
+	public void setNazwa(String nazwa) {
+		this.nazwa = nazwa;
 	}
 
-	public void setWaluta(String waluta) {
-		this.waluta = waluta;
+	public void setNosnik(String nosnik) {
+		this.nosnik = nosnik;
 	}
 
 	public void setCenaNabycia(BigDecimal cenaNabycia) {
@@ -102,8 +102,8 @@ public class Moneta {
 		this.dataNabycia = dataNabycia;
 	}
 
-	public void setKrajPochodzenia(String krajPochodzenia) {
-		this.krajPochodzenia = krajPochodzenia;
+	public void setWydawca(String wydawca) {
+		this.wydawca = wydawca;
 	}
 
 	public void setStatus(Status status) {
@@ -114,14 +114,14 @@ public class Moneta {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((opis == null) ? 0 : opis.hashCode());
+		result = prime * result + ((nazwa == null) ? 0 : nazwa.hashCode());
 		result = prime * result + ((cenaNabycia == null) ? 0 : cenaNabycia.hashCode());
 		result = prime * result + ((dataNabycia == null) ? 0 : dataNabycia.hashCode());
-		result = prime * result + ((krajPochodzenia == null) ? 0 : krajPochodzenia.hashCode());
-		result = prime * result + ((nominal == null) ? 0 : nominal.hashCode());
+		result = prime * result + ((wydawca == null) ? 0 : wydawca.hashCode());
+		result = prime * result + ((PEGI == null) ? 0 : PEGI.hashCode());
 		result = prime * result + ((numerKatalogowy == null) ? 0 : numerKatalogowy.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		result = prime * result + ((waluta == null) ? 0 : waluta.hashCode());
+		result = prime * result + ((nosnik == null) ? 0 : nosnik.hashCode());
 		return result;
 	}
 
@@ -133,11 +133,11 @@ public class Moneta {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Moneta other = (Moneta) obj;
-		if (opis == null) {
-			if (other.opis != null)
+		gra other = (gra) obj;
+		if (nazwa == null) {
+			if (other.nazwa != null)
 				return false;
-		} else if (!opis.equals(other.opis))
+		} else if (!nazwa.equals(other.nazwa))
 			return false;
 		if (cenaNabycia == null) {
 			if (other.cenaNabycia != null)
@@ -149,15 +149,15 @@ public class Moneta {
 				return false;
 		} else if (!dataNabycia.equals(other.dataNabycia))
 			return false;
-		if (krajPochodzenia == null) {
-			if (other.krajPochodzenia != null)
+		if (wydawca == null) {
+			if (other.wydawca != null)
 				return false;
-		} else if (!krajPochodzenia.equals(other.krajPochodzenia))
+		} else if (!wydawca.equals(other.wydawca))
 			return false;
-		if (nominal == null) {
-			if (other.nominal != null)
+		if (PEGI == null) {
+			if (other.PEGI != null)
 				return false;
-		} else if (!nominal.equals(other.nominal))
+		} else if (!PEGI.equals(other.PEGI))
 			return false;
 		if (numerKatalogowy == null) {
 			if (other.numerKatalogowy != null)
@@ -169,19 +169,19 @@ public class Moneta {
 				return false;
 		} else if (!status.equals(other.status))
 			return false;
-		if (waluta == null) {
-			if (other.waluta != null)
+		if (nosnik == null) {
+			if (other.nosnik != null)
 				return false;
-		} else if (!waluta.equals(other.waluta))
+		} else if (!nosnik.equals(other.nosnik))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Moneta [numerKatalogowy=" + numerKatalogowy + ", nominal=" + nominal + ", Opis=" + opis + ", waluta="
-				+ waluta + ", cenaNabycia=" + cenaNabycia + ", dataNabycia=" + dataNabycia + ", krajPochodzenia="
-				+ krajPochodzenia + ", status=" + status + "]";
+		return "gra [numerKatalogowy=" + numerKatalogowy + ", PEGI=" + PEGI + ", Nazwa=" + nazwa + ", nosnik="
+				+ nosnik + ", cenaNabycia=" + cenaNabycia + ", dataNabycia=" + dataNabycia + ", wydawca="
+				+ wydawca + ", status=" + status + "]";
 	}
 
 }

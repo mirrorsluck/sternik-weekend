@@ -4,12 +4,11 @@ package pl.sternik.rcz.weekend.entities;
 public enum Status {
     
     NOWA("Nowa"), 
-    DO_SPRZEDANIA("Do sprzedania"),
+    DO_SPRZEDANIA("Na sprzedaż"),
     DUBLET("Dublet");
     
     
     public static final Status[] ALL = { NOWA, DO_SPRZEDANIA, DUBLET };
-    public static final Status[] SPRZ = { NOWA, DO_SPRZEDANIA, DUBLET };
     
     
     private final String name;

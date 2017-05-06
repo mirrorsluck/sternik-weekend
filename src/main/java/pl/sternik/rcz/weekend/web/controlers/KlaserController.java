@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import pl.sternik.rcz.weekend.entities.Moneta;
+import pl.sternik.rcz.weekend.entities.gra;
 import pl.sternik.rcz.weekend.entities.Status;
 import pl.sternik.rcz.weekend.services.KlaserService;
 import pl.sternik.rcz.weekend.services.NotificationService;
@@ -38,24 +38,24 @@ public class KlaserController {
         return Arrays.asList(Status.ALL);
     }
 
-    @ModelAttribute("coinsAll")
-    public List<Moneta> populateCoins() {
+    @ModelAttribute("gamesAll")
+    public List<gra> populateGames() {
         return this.klaserService.findAll();
     }
 
-    @ModelAttribute("coinsToSell")
-    public List<Moneta> populateCoinsToSell() {
+    @ModelAttribute("gamesToSell")
+    public List<gra> populateGamesToSell() {
         return this.klaserService.findAllToSell();
     }
     
-    @ModelAttribute("coinsDublety")
-    public List<Moneta> populateCoinsDublety() {
+    @ModelAttribute("gamesDublety")
+    public List<gra> populateGamesDublety() {
         return this.klaserService.findAllDublety();
     }
 
 
-    @ModelAttribute("coinsLast3")
-    public List<Moneta> populateLast3Coins() {
+    @ModelAttribute("gamesLast3")
+    public List<gra> populateLast3Games() {
         return this.klaserService.findLatest3();
     }
 
@@ -64,7 +64,7 @@ public class KlaserController {
         return "index";
     }
 
-    @RequestMapping(value = "/monety", method = RequestMethod.GET)
+    @RequestMapping(value = "/gry", method = RequestMethod.GET)
     public String showMainPage(Model model) {
         model.addAttribute("MyMessages",  notificationService.getNotificationMessages());
         return "klaser";
