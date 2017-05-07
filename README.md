@@ -1,3 +1,3 @@
-# sternik-weekend
+# sternik-weekend / gameroo2
 
-## Aplikacja skoleniowa grupa weekendowa
+## Aplikacja zaliczeniowa, projekt Sternik
