@@ -5,33 +5,20 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-//@Entity
-//@XmlRootElement
+
 public class gra {
 
-//    @NotNull
-//    @Id
     private Long numerKatalogowy;
 	
-//	@NotNull
 	private Long PEGI;
 	
-	//@Size(min=2, max=30, message = "{Size.gra.nazwa}")
-//	@Size(min=2, max=30, message = "Nazwa should be in the range [{min}...{max}]")
 	private String nazwa;
-//	@NotEmpty
 	private String nosnik;
-//	@NotNull
 	private BigDecimal cenaNabycia;
-//	@NotNull
 	private Date dataNabycia;
-//	@NotEmpty
 	private String wydawca;
-//	@NotNull
 	private Status status;
 
-	
-	
 	public static gra producegra(Long numerKatalogowy, String wydawca, Long PEGI, String nosnik, String nazwa,
 			Date dataNabycia, BigDecimal cenaNabycia, Status status) {
 		gra m = new gra();

@@ -34,20 +34,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr th:each="coin : ${gamesToSell}">
-          <form action="#" th:action="@{/gry}" th:object="${coin}" method="post">
-          <td th:text="${coin.numerKatalogowy}"></td>
-          <td th:text="${coin.nazwa}"></td>
-          <td th:text="${coin.wydawca}"></td>
-          <td th:text="${coin.nosnik}"></td>
-          <td th:text="${coin.PEGI}"></td>
-          <td th:text="${{coin.cenaNabycia}}"></td>
-          <td th:text="${{coin.dataNabycia}}"></td>
-          <td th:text="#{${'klaser.status.' + coin.status}}"></td>
+        <tr th:each="game : ${gamesToSell}">
+          <form action="#" th:action="@{/gry}" th:object="${game}" method="post">
+          <td th:text="${game.numerKatalogowy}"></td>
+          <td th:text="${game.nazwa}"></td>
+          <td th:text="${game.wydawca}"></td>
+          <td th:text="${game.nosnik}"></td>
+          <td th:text="${game.PEGI}"></td>
+          <td th:text="${{game.cenaNabycia}}"></td>
+          <td th:text="${{game.dataNabycia}}"></td>
+          <td th:text="#{${'klaser.status.' + game.status}}"></td>
           <td>
-            <button class="btn btn-danger" type="submit" name="remove" th:value="${coin.numerKatalogowy}" th:text="#{klaser.remove}">Usuń</button>
+            <button class="btn btn-danger" type="submit" name="remove" th:value="${game.numerKatalogowy}" th:text="#{klaser.remove}">Usuń</button>
             
-            <a href="gra.html" th:href="@{|/gry/${coin.numerKatalogowy}|}" ><button class="btn btn-info" type="button" th:text="#{klaser.edit}"></button></a>              
+            <a href="gra.html" th:href="@{|/gry/${game.numerKatalogowy}|}" ><button class="btn btn-info" type="button" th:text="#{klaser.edit}"></button></a>              
           </td>
           </form>
         </tr>

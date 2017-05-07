@@ -26,7 +26,7 @@ public class HelloServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        System.out.println("Moj init");
+        System.out.println("init");
 
         HikariConfig hConfig = new HikariConfig();
         hConfig.setJdbcUrl(System.getenv("JDBC_DATABASE_URL"));
@@ -39,34 +39,22 @@ public class HelloServlet extends HttpServlet {
     @Override
     public void destroy() {
         super.destroy();
-        System.out.println("Moj destroy");
+        System.out.println("destroy");
         dataSource.close();
     }
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream out = resp.getOutputStream();
-        out.println("Hello Heroku, koko maroko z posta");
+        out.println("Hello1");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream out = resp.getOutputStream();
 
-        out.println("Hello Heroku, koko maroko");
+        out.println("Hello2");
         
         
         

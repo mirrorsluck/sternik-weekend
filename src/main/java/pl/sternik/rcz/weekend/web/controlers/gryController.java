@@ -81,7 +81,7 @@ public class gryController {
         if (result.isPresent())
             notifyService.addInfoMessage("Zapis gry udany");
         else
-            notifyService.addErrorMessage("Zapis gry NIE udany");
+            notifyService.addErrorMessage("Zapis gry nieudany");
         model.clear();
         return "redirect:/gry";
     }
@@ -107,7 +107,6 @@ public class gryController {
 
     @RequestMapping(value = "/gry/create", method = RequestMethod.GET)
     public String showMainPages(final gra gra) {
-        // Ustawiamy date nowej gry, na dole strony do dodania
         gra.setDataNabycia(Calendar.getInstance().getTime());
         return "gra";
     }

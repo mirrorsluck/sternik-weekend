@@ -20,26 +20,7 @@ public class ProstaBazaDanych implements gryRepository {
 
     public ProstaBazaDanych() {
         baza = new gra[15];
-        gra m = new gra();
-        m.setNumerKatalogowy(0L);
-        m.setWydawca("Polska");
-        m.setPEGI(1L);
-        m.setNosnik("zł");
-        m.setNazwa("Ładna nowiutka złotóweczka");
-        m.setDataNabycia(new Date());
-        m.setCenaNabycia(new BigDecimal("1.2"));
-        m.setStatus(Status.NOWA);
-        baza[0] = m;
-        m = new gra();
-        m.setNumerKatalogowy(2L);
-        m.setWydawca("Polska");
-        m.setPEGI(2L);
-        m.setNosnik("zł");
-        m.setNazwa("Ładna nowiutka dwu złotóweczka");
-        m.setDataNabycia(new Date());
-        m.setCenaNabycia(new BigDecimal("2.2"));
-        m.setStatus(Status.DO_SPRZEDANIA);
-        baza[2] = m;
+      
 
     }
 
@@ -68,9 +49,8 @@ public class ProstaBazaDanych implements gryRepository {
     public void deleteById(Long id) throws NoSuchgraException {
         int numerKatalogowy = id.intValue();
         if (!sprawdzPoprawnoscNumeruKatalogowego(numerKatalogowy)) {
-            throw new NoSuchgraException("Nie poprawny numer katologowy");
+            throw new NoSuchgraException("Niepoprawny numer katologowy");
         }
-        // tu troche zle ;)
         baza[numerKatalogowy] = null;
     }
 
@@ -78,7 +58,7 @@ public class ProstaBazaDanych implements gryRepository {
     public gra update(gra gra) throws NoSuchgraException {
         int numerKatalogowy = gra.getNumerKatalogowy().intValue();
         if (!sprawdzPoprawnoscNumeruKatalogowego(numerKatalogowy)) {
-            throw new NoSuchgraException("Nie poprawny numer katologowy");
+            throw new NoSuchgraException("Niepoprawny numer katologowy");
         }
 
         gra m = baza[gra.getNumerKatalogowy().intValue()];
