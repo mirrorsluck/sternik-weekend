@@ -20,13 +20,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import pl.sternik.rcz.weekend.entities.gra;
+import pl.sternik.rcz.weekend.entities.Gra;
 import pl.sternik.rcz.weekend.entities.Status;
 import pl.sternik.rcz.weekend.services.KlaserService;
 import pl.sternik.rcz.weekend.services.NotificationService;
 
 @Controller
-public class gryController {
+public class GryController {
 
     @Autowired
     // @Qualifier("spring")
@@ -42,10 +42,10 @@ public class gryController {
 
     @RequestMapping(value = "/gry/{id}", method = RequestMethod.GET)
     public String view(@PathVariable("id") Long id, final ModelMap model) {
-        Optional<gra> result;
+        Optional<Gra> result;
         result = klaserService.findById(id);
         if (result.isPresent()) {
-            gra gra = result.get();
+            Gra gra = result.get();
             model.addAttribute("gra", gra);
             return "gra";
         } else {
@@ -57,27 +57,27 @@ public class gryController {
 
     @RequestMapping(value = "/gry/{id}/json", produces = "application/json", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<gra> viewAsJson(@PathVariable("id") Long id, final ModelMap model) {
-        Optional<gra> result;
+    public ResponseEntity<Gra> viewAsJson(@PathVariable("id") Long id, final ModelMap model) {
+        Optional<Gra> result;
         result = klaserService.findById(id);
         if (result.isPresent()) {
-            gra gra = result.get();
-            return new ResponseEntity<gra>(gra, HttpStatus.OK);
+            Gra gra = result.get();
+            return new ResponseEntity<Gra>(gra, HttpStatus.OK);
         } else {
             notifyService.addErrorMessage("Cannot find gra #" + id);
             model.clear();
-            return new ResponseEntity<gra>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Gra>(HttpStatus.NOT_FOUND);
         }
     }
 
     @RequestMapping(value = "/gry", params = { "save" }, method = RequestMethod.POST)
-    public String savegra(gra gra, BindingResult bindingResult, ModelMap model) {
+    public String saveGra(Gra gra, BindingResult bindingResult, ModelMap model) {
 
         if (bindingResult.hasErrors()) {
             notifyService.addErrorMessage("Please fill the form correctly!");
             return "gra";
         }
-        Optional<gra> result = klaserService.edit(gra);
+        Optional<Gra> result = klaserService.edit(gra);
         if (result.isPresent())
             notifyService.addInfoMessage("Zapis gry udany");
         else
@@ -87,7 +87,7 @@ public class gryController {
     }
 
     @RequestMapping(value = "/gry", params = { "create" }, method = RequestMethod.POST)
-    public String creategra(gra gra, BindingResult bindingResult, ModelMap model) {
+    public String createGra(Gra gra, BindingResult bindingResult, ModelMap model) {
         if (bindingResult.hasErrors()) {
             notifyService.addErrorMessage("Please fill the form correctly!");
             return "gra";
@@ -99,14 +99,14 @@ public class gryController {
     }
 
     @RequestMapping(value = "/gry", params = { "remove" }, method = RequestMethod.POST)
-    public String removeRow(final gra gra, final BindingResult bindingResult, final HttpServletRequest req) {
+    public String removeRow(final Gra gra, final BindingResult bindingResult, final HttpServletRequest req) {
         final Integer rowId = Integer.valueOf(req.getParameter("remove"));
         Optional<Boolean> result = klaserService.deleteById(rowId.longValue());
         return "redirect:/gry";
     }
 
     @RequestMapping(value = "/gry/create", method = RequestMethod.GET)
-    public String showMainPages(final gra gra) {
+    public String showMainPages(final Gra gra) {
         gra.setDataNabycia(Calendar.getInstance().getTime());
         return "gra";
     }

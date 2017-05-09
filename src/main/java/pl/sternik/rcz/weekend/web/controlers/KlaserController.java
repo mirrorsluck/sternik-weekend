@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import pl.sternik.rcz.weekend.entities.gra;
+import pl.sternik.rcz.weekend.entities.Gra;
 import pl.sternik.rcz.weekend.entities.Status;
 import pl.sternik.rcz.weekend.services.KlaserService;
 import pl.sternik.rcz.weekend.services.NotificationService;
@@ -39,23 +39,23 @@ public class KlaserController {
     }
 
     @ModelAttribute("gamesAll")
-    public List<gra> populateGames() {
+    public List<Gra> populateGames() {
         return this.klaserService.findAll();
     }
 
     @ModelAttribute("gamesToSell")
-    public List<gra> populateGamesToSell() {
+    public List<Gra> populateGamesToSell() {
         return this.klaserService.findAllToSell();
     }
     
     @ModelAttribute("gamesDublety")
-    public List<gra> populateGamesDublety() {
+    public List<Gra> populateGamesDublety() {
         return this.klaserService.findAllDublety();
     }
 
 
     @ModelAttribute("gamesLast3")
-    public List<gra> populateLast3Games() {
+    public List<Gra> populateLast3Games() {
         return this.klaserService.findLatest3();
     }
 

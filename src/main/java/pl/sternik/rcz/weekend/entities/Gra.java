@@ -6,7 +6,7 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
-public class gra {
+public class Gra {
 
     private Long numerKatalogowy;
 	
@@ -19,9 +19,9 @@ public class gra {
 	private String wydawca;
 	private Status status;
 
-	public static gra producegra(Long numerKatalogowy, String wydawca, Long PEGI, String nosnik, String nazwa,
+	public static Gra produceGra(Long numerKatalogowy, String wydawca, Long PEGI, String nosnik, String nazwa,
 			Date dataNabycia, BigDecimal cenaNabycia, Status status) {
-		gra m = new gra();
+		Gra m = new Gra();
 		m.numerKatalogowy = numerKatalogowy;
 		m.wydawca = wydawca;
 		m.PEGI = PEGI;
@@ -120,7 +120,7 @@ public class gra {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		gra other = (gra) obj;
+		Gra other = (Gra) obj;
 		if (nazwa == null) {
 			if (other.nazwa != null)
 				return false;
@@ -166,7 +166,7 @@ public class gra {
 
 	@Override
 	public String toString() {
-		return "gra [numerKatalogowy=" + numerKatalogowy + ", PEGI=" + PEGI + ", Nazwa=" + nazwa + ", nosnik="
+		return "Gra [numerKatalogowy=" + numerKatalogowy + ", PEGI=" + PEGI + ", Nazwa=" + nazwa + ", nosnik="
 				+ nosnik + ", cenaNabycia=" + cenaNabycia + ", dataNabycia=" + dataNabycia + ", wydawca="
 				+ wydawca + ", status=" + status + "]";
 	}

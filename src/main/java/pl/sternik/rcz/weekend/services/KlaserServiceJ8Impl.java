@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
-import pl.sternik.rcz.weekend.entities.gra;
+import pl.sternik.rcz.weekend.entities.Gra;
 import pl.sternik.rcz.weekend.entities.Status;
-import pl.sternik.rcz.weekend.repositories.graAlreadyExistsException;
-import pl.sternik.rcz.weekend.repositories.gryRepository;
-import pl.sternik.rcz.weekend.repositories.NoSuchgraException;
+import pl.sternik.rcz.weekend.repositories.GraAlreadyExistsException;
+import pl.sternik.rcz.weekend.repositories.GryRepository;
+import pl.sternik.rcz.weekend.repositories.NoSuchGraException;
 
 
 @Service
@@ -23,36 +23,36 @@ public class KlaserServiceJ8Impl implements KlaserService {
 
     @Autowired
     @Qualifier("lista")
-    private gryRepository gry;
+    private GryRepository gry;
 
     @Override
-    public List<gra> findAll() {
+    public List<Gra> findAll() {
         return gry.findAll();
     }
 
     @Override
-    public List<gra> findLatest3() {
+    public List<Gra> findLatest3() {
         return gry.findAll().stream().sorted((a, b) -> b.getDataNabycia().compareTo(a.getDataNabycia())).limit(5)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<gra> findById(Long id) {
+    public Optional<Gra> findById(Long id) {
         try {
             return Optional.of(gry.readById(id));
-        } catch (NoSuchgraException e) {
+        } catch (NoSuchGraException e) {
             return Optional.empty();
         }
     }
 
     @Override
-    public Optional<gra> create(gra gra) {
+    public Optional<Gra> create(Gra gra) {
         try {
             return Optional.of(gry.create(gra));
-        } catch (graAlreadyExistsException e) {
+        } catch (GraAlreadyExistsException e) {
             try {
                 return Optional.of(gry.readById(gra.getNumerKatalogowy()));
-            } catch (NoSuchgraException e1) {
+            } catch (NoSuchGraException e1) {
                 return Optional.empty();
             }
         }
@@ -60,10 +60,10 @@ public class KlaserServiceJ8Impl implements KlaserService {
     }
 
     @Override
-    public Optional<gra> edit(gra gra) {
+    public Optional<Gra> edit(Gra gra) {
         try {
             return Optional.of(gry.update(gra));
-        } catch (NoSuchgraException e) {
+        } catch (NoSuchGraException e) {
             return Optional.empty();
         }
     }
@@ -73,19 +73,19 @@ public class KlaserServiceJ8Impl implements KlaserService {
         try {
             gry.deleteById(id);
             return Optional.of(Boolean.TRUE);
-        } catch (NoSuchgraException e) {
+        } catch (NoSuchGraException e) {
             return Optional.of(Boolean.FALSE);
         }
     }
 
     @Override
-    public List<gra> findAllToSell() {
+    public List<Gra> findAllToSell() {
         return gry.findAll().stream().filter(p -> Objects.equals(p.getStatus(), Status.DO_SPRZEDANIA))
                 .collect(Collectors.toList());
     }
 
 	@Override
-	public List<gra> findAllDublety() {
+	public List<Gra> findAllDublety() {
 	      return gry.findAll().stream().filter(p -> Objects.equals(p.getStatus(), Status.DUBLET))
 	                .collect(Collectors.toList());
 	}

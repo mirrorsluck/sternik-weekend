@@ -8,31 +8,31 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import pl.sternik.rcz.weekend.entities.gra;
+import pl.sternik.rcz.weekend.entities.Gra;
 import pl.sternik.rcz.weekend.entities.Status;
 
 
 @Repository
 @Qualifier("tablica")
-public class ProstaBazaDanych implements gryRepository {
+public class ProstaBazaDanych implements GryRepository {
 
-    private gra[] baza;
+    private Gra[] baza;
 
     public ProstaBazaDanych() {
-        baza = new gra[15];
+        baza = new Gra[15];
       
 
     }
 
     public ProstaBazaDanych(int rozmiarBazy) {
-        baza = new gra[rozmiarBazy];
+        baza = new Gra[rozmiarBazy];
     }
 
     @Override
-    public gra create(gra gra) throws graAlreadyExistsException {
+    public Gra create(Gra gra) throws GraAlreadyExistsException {
         if (gra.getNumerKatalogowy() != null && baza[gra.getNumerKatalogowy().intValue()] != null) {
             if (gra.getNumerKatalogowy().equals(baza[gra.getNumerKatalogowy().intValue()].getNumerKatalogowy())) {
-                throw new graAlreadyExistsException("Już jest gra o takim numerze.");
+                throw new GraAlreadyExistsException("Już jest gra o takim numerze.");
             }
         }
         for (int i = 0; i < baza.length; i++) {
@@ -46,24 +46,24 @@ public class ProstaBazaDanych implements gryRepository {
     }
 
     @Override
-    public void deleteById(Long id) throws NoSuchgraException {
+    public void deleteById(Long id) throws NoSuchGraException {
         int numerKatalogowy = id.intValue();
         if (!sprawdzPoprawnoscNumeruKatalogowego(numerKatalogowy)) {
-            throw new NoSuchgraException("Niepoprawny numer katologowy");
+            throw new NoSuchGraException("Niepoprawny numer katologowy");
         }
         baza[numerKatalogowy] = null;
     }
 
     @Override
-    public gra update(gra gra) throws NoSuchgraException {
+    public Gra update(Gra gra) throws NoSuchGraException {
         int numerKatalogowy = gra.getNumerKatalogowy().intValue();
         if (!sprawdzPoprawnoscNumeruKatalogowego(numerKatalogowy)) {
-            throw new NoSuchgraException("Niepoprawny numer katologowy");
+            throw new NoSuchGraException("Niepoprawny numer katologowy");
         }
 
-        gra m = baza[gra.getNumerKatalogowy().intValue()];
+        Gra m = baza[gra.getNumerKatalogowy().intValue()];
         if (m == null) {
-            throw new NoSuchgraException("Brak takiej gry.");
+            throw new NoSuchGraException("Brak takiej gry.");
         } else {
             baza[gra.getNumerKatalogowy().intValue()] = gra;
         }
@@ -71,10 +71,10 @@ public class ProstaBazaDanych implements gryRepository {
     }
 
     @Override
-    public gra readById(Long numerKatalogowy) throws NoSuchgraException {
+    public Gra readById(Long numerKatalogowy) throws NoSuchGraException {
         int id = numerKatalogowy.intValue();
         if (!sprawdzPoprawnoscNumeruKatalogowego(id) || czyWolne(id)) {
-            throw new NoSuchgraException();
+            throw new NoSuchGraException();
         }
         return baza[id];
     }
@@ -86,8 +86,8 @@ public class ProstaBazaDanych implements gryRepository {
     }
 
     @Override
-    public List<gra> findAll() {
-        List<gra> tmp = new ArrayList<>();
+    public List<Gra> findAll() {
+        List<Gra> tmp = new ArrayList<>();
         for (int i = 0; i < baza.length; i++) {
             if (baza[i] != null)
                 tmp.add(baza[i]);

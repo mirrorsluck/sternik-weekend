@@ -3,23 +3,23 @@ package pl.sternik.rcz.weekend.services;
 import java.util.List;
 import java.util.Optional;
 
-import pl.sternik.rcz.weekend.entities.gra;
+import pl.sternik.rcz.weekend.entities.Gra;
 
 
 public interface KlaserService {
-    List<gra> findAll();
+    List<Gra> findAll();
 
-    List<gra> findAllToSell();
+    List<Gra> findAllToSell();
 
-    Optional<gra> findById(Long id);
+    Optional<Gra> findById(Long id);
 
-    Optional<gra> create(gra gra);
+    Optional<Gra> create(Gra gra);
 
-    Optional<gra> edit(gra gra);
+    Optional<Gra> edit(Gra gra);
 
     Optional<Boolean> deleteById(Long id);
 
-    List<gra> findLatest3();
+    List<Gra> findLatest3();
 
-	List<gra> findAllDublety();
+	List<Gra> findAllDublety();
 }
