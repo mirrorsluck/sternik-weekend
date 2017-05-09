@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 
 import pl.sternik.rcz.weekend.entities.Gra;
 import pl.sternik.rcz.weekend.entities.Status;
@@ -75,26 +76,31 @@ public class GryController {
 
         if (bindingResult.hasErrors()) {
             notifyService.addErrorMessage("Please fill the form correctly!");
-            return "gra";
+            model.addAttribute("MyMessages", notifyService.getNotificationMessages()); 
+            return "gra";   
         }
         Optional<Gra> result = klaserService.edit(gra);
         if (result.isPresent())
             notifyService.addInfoMessage("Zapis gry udany");
         else
             notifyService.addErrorMessage("Zapis gry nieudany");
-        model.clear();
+        model.clear();       
         return "redirect:/gry";
+      
     }
 
     @RequestMapping(value = "/gry", params = { "create" }, method = RequestMethod.POST)
     public String createGra(Gra gra, BindingResult bindingResult, ModelMap model) {
         if (bindingResult.hasErrors()) {
-            notifyService.addErrorMessage("Please fill the form correctly!");
+            notifyService.addErrorMessage("Please fill the form correctly!");   
+            model.addAttribute("MyMessages", notifyService.getNotificationMessages());
             return "gra";
         }
+        else
         klaserService.create(gra);
-        model.clear();
+        model.clear();        
         notifyService.addInfoMessage("Zapis nowej gry udany");
+       
         return "redirect:/gry";
     }
 

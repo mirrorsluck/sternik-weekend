@@ -48,6 +48,8 @@ public class HelloServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletOutputStream out = resp.getOutputStream();
         out.println("Hello1");
+     //   out.flush();
+     //   out.close();
     }
 
     @Override
@@ -56,22 +58,7 @@ public class HelloServlet extends HttpServlet {
 
         out.println("Hello2");
         
-        
-        
-        
-        
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+           
         HttpSession session = req.getSession();
         Object value = session.getValue("ddd");
         if(value!= null)
