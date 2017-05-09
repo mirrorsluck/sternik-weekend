@@ -30,7 +30,7 @@ public class GryRepositoryJ8Impl implements GryRepository {
                     Status.DUBLET));
             add(Gra.produceGra(6L, "Rockstar Games", 18L, "Cyfrowy", "Grand Theft Auto V", new Date(), new BigDecimal("149.99"), Status.NOWA));
         }
-    };
+    }; 
 
     @Override
     public List<Gra> findAll() {
