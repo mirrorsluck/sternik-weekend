@@ -3,7 +3,10 @@ package pl.sternik.rcz.weekend.entities;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 public class Gra {
@@ -12,13 +15,20 @@ public class Gra {
 	
 	private Long PEGI;
 	
+	
+	
+	@NotEmpty
 	private String nazwa;
+	
 	private String nosnik;
+	@NotNull
 	private BigDecimal cenaNabycia;
 	private Date dataNabycia;
 	private String wydawca;
 	private Status status;
 
+	
+	
 	public static Gra produceGra(Long numerKatalogowy, String wydawca, Long PEGI, String nosnik, String nazwa,
 			Date dataNabycia, BigDecimal cenaNabycia, Status status) {
 		Gra m = new Gra();

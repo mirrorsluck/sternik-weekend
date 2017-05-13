@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -72,7 +73,7 @@ public class GryController {
     }
 
     @RequestMapping(value = "/gry", params = { "save" }, method = RequestMethod.POST)
-    public String saveGra(Gra gra, BindingResult bindingResult, ModelMap model) {
+    public String saveGra(@Valid Gra gra, BindingResult bindingResult, ModelMap model) {
 
         if (bindingResult.hasErrors()) {
             notifyService.addErrorMessage("Please fill the form correctly!");
@@ -90,7 +91,7 @@ public class GryController {
     }
 
     @RequestMapping(value = "/gry", params = { "create" }, method = RequestMethod.POST)
-    public String createGra(Gra gra, BindingResult bindingResult, ModelMap model) {
+    public String createGra(@Valid Gra gra, BindingResult bindingResult, ModelMap model) {
         if (bindingResult.hasErrors()) {
             notifyService.addErrorMessage("Please fill the form correctly!");   
             model.addAttribute("MyMessages", notifyService.getNotificationMessages());
