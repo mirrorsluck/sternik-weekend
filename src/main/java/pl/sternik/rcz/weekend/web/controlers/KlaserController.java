@@ -27,7 +27,7 @@ import pl.sternik.rcz.weekend.services.NotificationService;
 public class KlaserController {
 
     @Autowired
-    //@Qualifier("spring")
+    @Qualifier("spring-data")
     private KlaserService klaserService;
 
     @Autowired
