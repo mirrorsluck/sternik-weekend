@@ -31,7 +31,7 @@ import pl.sternik.rcz.weekend.services.NotificationService;
 public class GryController {
 
     @Autowired
-    // @Qualifier("spring")
+    @Qualifier("spring-data")
     private KlaserService klaserService;
 
     @Autowired

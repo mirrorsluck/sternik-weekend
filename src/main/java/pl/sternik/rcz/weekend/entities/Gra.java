@@ -3,28 +3,38 @@ package pl.sternik.rcz.weekend.entities;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-
+@Entity
+@XmlRootElement
 public class Gra {
 
-    private Long numerKatalogowy;
 	
+    @NotNull
+    @Id
+    private Long numerKatalogowy;
+    @NotNull
 	private Long PEGI;
 	
 	
 	
-	@NotEmpty
+    @Size(min=2, max=30, message = "Opis should be in the range [{min}...{max}]")
 	private String nazwa;
-	
+    @NotEmpty
 	private String nosnik;
 	@NotNull
 	private BigDecimal cenaNabycia;
+	@NotNull
 	private Date dataNabycia;
+	@NotEmpty
 	private String wydawca;
+	@NotNull
 	private Status status;
 
 	
