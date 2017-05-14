@@ -23,9 +23,9 @@
 	<bean id="jpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 		<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
-		<!-- <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect" />
+		<!-- <property name="databasePlatform" value="org.hibernate.dialect.H2Dialect" /> -->
 		<property name="generateDdl" value="false" />
-		<property name="showSql" value="true" /> -->
+		<property name="showSql" value="true" /> 
 	</bean>
 
 	<!-- Entity Manager Factory -->
