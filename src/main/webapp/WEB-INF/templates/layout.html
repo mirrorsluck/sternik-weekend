@@ -18,6 +18,10 @@
     <a class="btn btn-warning" style="width: 150px;" href="tosell.html" th:href="@{/tosell}">Gry do sprzedania</a>
             <a class="btn btn-warning" style="width: 150px;" href="dublety.html" th:href="@{/dublety}">Dublety</a>
     <a class="btn btn-warning" style="width: 150px;" href="gra.html" th:href="@{/gry/create}">Dodaj grę</a>
+        Zalogowany: <b th:inline="text"> [[${#httpServletRequest.remoteUser}]] </b>  
+    <form th:action="@{/logout}" method="POST" style="display: inline">
+        <input type=submit class="link" value="Wyloguj"/>
+    </form>
 
    <!--  Zalogowany: <b th:inline="text"> [[${#httpServletRequest.remoteUser}]] </b>  
     <form th:action="@{/wyloguj}" method="POST" style="display: inline">
