@@ -1,4 +1,4 @@
-package pl.sternik.kk.weekend.web;
+package pl.sternik.rcz.weekend.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
